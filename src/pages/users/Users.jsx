@@ -1,4 +1,6 @@
+
 import patient from "../../assets/img/patients/patient1.jpg";
+import ModalPopup from "../../components/ModalPopup/ModalPopup";
 const Users = () => {
   return (
     <>
@@ -12,9 +14,14 @@ const Users = () => {
           </div>
         </div>
       </div>
+      <ModalPopup target="userModal">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptatum laboriosam iusto temporibus debitis, repudiandae facilis distinctio ex, blanditiis itaque excepturi voluptate rerum dolorem. Ad hic enim in quaerat illum.</p>
+      </ModalPopup>
       <div className="row">
         <div className="col-md-12">
-          <button className="btn btn-primary mb-3"> Add New </button>
+          <button  data-target="#userModal" data-toggle="modal" className="btn btn-primary mb-3"> Add     
+             New 
+          </button>
           <div className="card card-table">
             <div className="card-header">
               <h4 className="card-title">Appointment List</h4>
