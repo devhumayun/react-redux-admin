@@ -1,4 +1,9 @@
+import spi1 from '../../assets/img/specialities/specialities-01.png'
+import DataTable from 'datatables.net-dt';
 const Dashboard = () => {
+  new DataTable('.datatable', {
+    responsive: true
+  })
   return (
     <>
       <div className="page-header">
@@ -93,6 +98,96 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <div className="row">
+						<div className="col-sm-12">
+							<div className="card">
+								<div className="card-body">
+									<div className="table-responsive">
+										<table className="datatable table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Specialities</th>
+													<th className="text-right">Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>#SP001</td>
+													
+													<td>
+														<h2 className="table-avatar">
+															<a href="profile.html" className="avatar avatar-sm mr-2">
+																<img className="avatar-img" src={spi1} alt="Speciality" />
+															</a>
+															<a href="#">Urology</a>
+														</h2>
+													</td>
+												
+													<td className="text-right">
+														<div className="actions">
+															<a className="btn btn-sm bg-success-light" data-toggle="modal" href="#">
+																<i className="fe fe-pencil"></i> Edit
+															</a>
+															<a  data-toggle="modal" href="#delete_modal" className="btn btn-sm bg-danger-light">
+																<i className="fe fe-trash"></i> Delete
+															</a>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>#SP001</td>
+													
+													<td>
+														<h2 className="table-avatar">
+															<a href="profile.html" className="avatar avatar-sm mr-2">
+																<img className="avatar-img" src={spi1} alt="Speciality" />
+															</a>
+															<a href="#">Urology</a>
+														</h2>
+													</td>
+												
+													<td className="text-right">
+														<div className="actions">
+															<a className="btn btn-sm bg-success-light" data-toggle="modal" href="#">
+																<i className="fe fe-pencil"></i> Edit
+															</a>
+															<a  data-toggle="modal" href="#delete_modal" className="btn btn-sm bg-danger-light">
+																<i className="fe fe-trash"></i> Delete
+															</a>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>#SP001</td>
+													
+													<td>
+														<h2 className="table-avatar">
+															<a href="profile.html" className="avatar avatar-sm mr-2">
+																<img className="avatar-img" src={spi1} alt="Speciality" />
+															</a>
+															<a href="#">Urology</a>
+														</h2>
+													</td>
+												
+													<td className="text-right">
+														<div className="actions">
+															<a className="btn btn-sm bg-success-light" data-toggle="modal" href="#">
+																<i className="fe fe-pencil"></i> Edit
+															</a>
+															<a  data-toggle="modal" href="#delete_modal" className="btn btn-sm bg-danger-light">
+																<i className="fe fe-trash"></i> Delete
+															</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
     </>
   );
 };

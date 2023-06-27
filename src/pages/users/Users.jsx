@@ -1,7 +1,10 @@
-
 import patient from "../../assets/img/patients/patient1.jpg";
 import ModalPopup from "../../components/ModalPopup/ModalPopup";
+import DataTable from 'datatables.net-dt';
 const Users = () => {
+  new DataTable('.datatableuser', {
+    responsive: true
+  })
   return (
     <>
       <div className="page-header">
@@ -28,7 +31,7 @@ const Users = () => {
             </div>
             <div className="card-body">
               <div className="table-responsive">
-                <table className="table table-hover table-center mb-0">
+                <table className="datatableuser table table-hover table-center mb-0">
                   <thead>
                     <tr>
                       <th>Doctor Name</th>
