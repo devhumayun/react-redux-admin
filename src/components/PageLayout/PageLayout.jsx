@@ -5,7 +5,7 @@ import SideBar from "../../components/SideBar/SideBar";
 const PageLayout = () => {
   return (
     <>
-            <div className="main-wrapper">
+      <div className="main-wrapper">
         <Header />
         <SideBar />
         <div className="page-wrapper">
@@ -15,7 +15,7 @@ const PageLayout = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PageLayout
+export default PageLayout;

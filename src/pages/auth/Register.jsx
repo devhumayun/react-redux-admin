@@ -1,6 +1,65 @@
 import { Link } from 'react-router-dom';
 import whiteLogo from '../../assets/img/logo-white.png'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUser } from '../../features/auth/authApiSlice';
+import { sweetAlertBasic, sweetAlertStandard } from '../../utlis/sweetAlert';
+import { createToast } from '../../utlis/toast';
+import { setMessageEmpty } from '../../features/auth/authSlice';
+
 const Register = () => {
+
+  const dispatch = useDispatch()
+  const {error, message} = useSelector(state => state.auth)
+
+  const [ input, setInput ] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cPassword: ""
+  })
+  const handleInputChange = (e) => {
+    setInput((preState) => ({
+      ...preState,
+      [e.target.name] : e.target.value
+    }))
+  }
+
+  const handleUserRegister = (e) => {
+    e.preventDefault()
+
+    if(!input.name || !input.email || !input.password){
+      sweetAlertBasic("All Fields are requried")
+    }
+
+    if( input.password !== input.cPassword){
+      sweetAlertStandard({title: "Password not match", msg:"Password and comfirm password must have to me same!"}, "info")
+    }else{
+      dispatch(createUser({
+        name: input.name,
+        email: input.email,
+        password: input.password
+      }))
+      setInput({
+        name: "",
+        email: "",
+        password: "",
+        cPassword: ""
+      })
+    }
+  }
+
+  useEffect(() => {
+    if(error){
+      createToast(error)
+      dispatch(setMessageEmpty())
+    }
+    if(message){
+      createToast(message, "success")
+      dispatch(setMessageEmpty())
+    }
+  }, [error,message])
+
   return (
     <>
       <div className="main-wrapper login-body">
@@ -19,12 +78,15 @@ const Register = () => {
                   <h1>Register</h1>
                   <p className="account-subtitle">Access to our dashboard</p>
 
-                  <form action="https://dreamguys.co.in/demo/doccure/admin/login.html">
+                  <form onSubmit={handleUserRegister}>
                     <div className="form-group">
                       <input
                         className="form-control"
                         type="text"
                         placeholder="Name"
+                        name='name'
+                        value={input.name}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div className="form-group">
@@ -32,6 +94,9 @@ const Register = () => {
                         className="form-control"
                         type="text"
                         placeholder="Email"
+                        name='email'
+                        value={input.email}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div className="form-group">
@@ -39,6 +104,9 @@ const Register = () => {
                         className="form-control"
                         type="text"
                         placeholder="Password"
+                        name='password'
+                        value={input.password}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div className="form-group">
@@ -46,6 +114,9 @@ const Register = () => {
                         className="form-control"
                         type="text"
                         placeholder="Confirm Password"
+                        name='cPassword'
+                        value={input.cPassword}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div className="form-group mb-0">
